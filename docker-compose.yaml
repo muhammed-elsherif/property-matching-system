@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  backend:
+    build: .
+    container_name: backend_c
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/realestate
+    networks:
+      - my-network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: mongo_c
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
+volumes:
+  mongo-data:

@@ -1,0 +1,70 @@
+# swagger.yaml
+swagger: "2.0"
+info:
+  description: "API documentation for the property matching system"
+  version: "1.0.0"
+  title: "Property Matching System API"
+paths:
+  /requests:
+    post:
+      tags:
+        - "Requests"
+      summary: "Create a property request"
+      description: "This can only be done by clients."
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Request object that needs to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/Request"
+      responses:
+        201:
+          description: "Request created"
+        400:
+          description: "Invalid input"
+  /admin/stats:
+    get:
+      tags:
+        - "Admin"
+      summary: "Get admin stats"
+      description: "This can only be done by admins."
+      parameters:
+        - name: "Authorization"
+          in: "header"
+          required: true
+          type: "string"
+        - name: "page"
+          in: "query"
+          type: "integer"
+        - name: "limit"
+          in: "query"
+          type: "integer"
+      responses:
+        200:
+          description: "Stats retrieved successfully"
+        403:
+          description: "Access denied"
+definitions:
+  Request:
+    type: "object"
+    required:
+      - "propertyType"
+      - "area"
+      - "price"
+      - "city"
+      - "district"
+    properties:
+      propertyType:
+        type: "string"
+        enum: ["VILLA", "HOUSE", "LAND", "APARTMENT"]
+      area:
+        type: "number"
+      price:
+        type: "number"
+      city:
+        type: "string"
+      district:
+        type: "string"
+      description:
+        type: "string"
