@@ -17,8 +17,4 @@ JWT_SECRET=<your-jwt-secret>
 - Passwords are hashed using bcrypt.
 - Performance considerations include efficient matching logic and pagination.
 
-Include a sample MongoDB backup file (backup.json) in the repository for testing.
-Bonus Points
-Filters for Users:
-
-Add additional query parameters in the matching endpoint to allow users to refine their searches.
+Include a sample MongoDB backup file (src/date) in the repository for testing.
