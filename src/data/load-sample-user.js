@@ -1,8 +1,12 @@
-const mongoose = require('mongoose')
-const User = require('../models/User')
-const users = require('./user')
+import mongoose from 'mongoose'
+import { config } from 'dotenv'
 
-async function loadData() {
+import User from '../models/User.js'
+import users from './user.js'
+
+config()
+
+export default async function loadData() {
   try {
     await mongoose.connect(process.env.MONGO_URI)
 
@@ -21,5 +25,3 @@ async function loadData() {
     process.exit()
   }
 }
-
-loadData()

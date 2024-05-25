@@ -2,7 +2,8 @@ import { Router } from 'express'
 const router = Router()
 import { authenticate, authorize } from '../middleware/auth.js'
 
-import { createAd, matchRequests } from '../controllers/adController.js'
+import { createAd } from '../controllers/adController.js'
+import { matchRequests } from '../controllers/matchController.js'
 
 router
   .post('/ads', authenticate, authorize('AGENT'), createAd)
