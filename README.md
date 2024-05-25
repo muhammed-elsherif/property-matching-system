@@ -19,7 +19,7 @@
 
 5.  Run tests:
 
--  Ensure that line 18 in `src/index.js is` commented out to prevent the application from starting before running tests.
+-  Ensure that line 22 in `src/index.js is` commented out to prevent the application from starting before running tests.
 
 -  Run tests: Execute npm test to run the test suite.
 
