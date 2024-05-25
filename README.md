@@ -28,7 +28,6 @@
 6.  Include a sample MongoDB backup file:
 	-  Ensure that line 18 in `src/index.js is` not commented to load user samples.
 
--  Restore backup: Use the provided MongoDB backup file located in `src/data` to restore sample data to your MongoDB database. You can use the `mongorestore` command to import the backup into your database.
 
   
   
