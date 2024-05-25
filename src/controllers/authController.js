@@ -1,8 +1,10 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const User = require('../models/User')
+import jwt from 'jsonwebtoken'
+import pkg from 'bcryptjs';
+const { compare } = pkg;
 
-exports.login = async (req, res) => {
+import User from '../models/User.js'
+
+export async function login(req, res) {
   try {
     const { phone, password } = req.body
     const user = await User.findOne({ phone })
@@ -13,7 +15,7 @@ exports.login = async (req, res) => {
     }
 
     // Matching passwords
-    const isPasswordValid = await bcrypt.compare(password, user.password)
+    const isPasswordValid = await compare(password, user.password)
     if (!isPasswordValid) {
       return res.status(400).send({ error: 'Invalid login credentials22' })
     }

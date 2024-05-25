@@ -1,6 +1,6 @@
-const Ad = require('../models/Ad')
+import Ad from '../models/Ad.js'
 
-exports.createAd = async (req, res) => {
+export async function createAd(req, res) {
   try {
     const ad = new Ad({ ...req.body, userId: req.user._id })
     await ad.save()
@@ -10,9 +10,9 @@ exports.createAd = async (req, res) => {
   }
 }
 
-const PropertyRequest = require('../models/PropertyRequest')
+import PropertyRequest from '../models/PropertyRequest.js'
 
-exports.matchRequests = async (req, res) => {
+export async function matchRequests(req, res) {
   try {
     const { adId } = req.params
     const { page = 1, limit = 10 } = req.query

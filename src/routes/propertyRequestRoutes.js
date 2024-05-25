@@ -1,11 +1,11 @@
-const express = require('express')
-const router = express.Router()
-const { authenticate, authorize } = require('../middleware/auth')
+import { Router } from 'express'
+const router = Router()
+import { authenticate, authorize } from '../middleware/auth.js'
 
-const { createRequest, updateRequest } = require('../controllers/propertyRequestController')
+import { createRequest, updateRequest } from '../controllers/propertyRequestController.js'
 
 router
   .post('/requests', authenticate, authorize('CLIENT'), createRequest)
   .patch('/requests/:id', authenticate, authorize('CLIENT'), updateRequest)
 
-module.exports = router
+export default router

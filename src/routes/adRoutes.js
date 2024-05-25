@@ -1,11 +1,11 @@
-const express = require('express')
-const router = express.Router()
-const { authenticate, authorize } = require('../middleware/auth')
+import { Router } from 'express'
+const router = Router()
+import { authenticate, authorize } from '../middleware/auth.js'
 
-const { createAd, matchRequests } = require('../controllers/adController')
+import { createAd, matchRequests } from '../controllers/adController.js'
 
 router
   .post('/ads', authenticate, authorize('AGENT'), createAd)
   .get('/ads/:adId/match', authenticate, authorize('AGENT'), matchRequests)
 
-module.exports = router
+export default router

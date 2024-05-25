@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
 
-const propertyRequestSchema = new mongoose.Schema(
+const propertyRequestSchema = new Schema(
   {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     propertyType: { type: String, enum: ['VILLA', 'HOUSE', 'LAND', 'APARTMENT'], required: true },
     area: { type: Number, required: true },
     price: { type: Number, required: true },
@@ -14,4 +14,4 @@ const propertyRequestSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-module.exports = mongoose.model('PropertyRequest', propertyRequestSchema)
+export default model('PropertyRequest', propertyRequestSchema)

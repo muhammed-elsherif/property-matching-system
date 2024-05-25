@@ -1,6 +1,6 @@
-const PropertyRequest = require('../models/PropertyRequest')
+import PropertyRequest from '../models/PropertyRequest.js'
 
-exports.createRequest = async (req, res) => {
+export async function createRequest(req, res) {
   try {
     const request = new PropertyRequest({
       ...req.body,
@@ -14,7 +14,7 @@ exports.createRequest = async (req, res) => {
 }
 
 // Update Property Request
-exports.updateRequest = async (req, res) => {
+export async function updateRequest(req, res) {
   const updates = Object.keys(req.body)
   const allowedUpdates = ['description', 'area', 'price']
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update))

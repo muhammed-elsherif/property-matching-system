@@ -1,6 +1,6 @@
-const User = require('../models/User');
+import User from '../models/User.js';
 
-exports.getAdminStats = async (req, res) => {
+export default async function getAdminStats(req, res) {
   const { page = 1, limit = 10 } = req.query
   try {
     const stats = await User.aggregate([
@@ -50,4 +50,4 @@ exports.getAdminStats = async (req, res) => {
   } catch (e) {
     res.status(500).send(e)
   }
-};
+}

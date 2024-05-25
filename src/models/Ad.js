@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
+import { Schema, model } from 'mongoose'
 
-const adSchema = new mongoose.Schema(
+const adSchema = new Schema(
   {
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     propertyType: { type: String, enum: ['VILLA', 'HOUSE', 'LAND', 'APARTMENT'], required: true },
     area: { type: Number, required: true },
     price: { type: Number, required: true },
@@ -14,4 +14,4 @@ const adSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-module.exports = mongoose.model('Ad', adSchema)
+export default model('Ad', adSchema)
